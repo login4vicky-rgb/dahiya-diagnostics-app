@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'core/app_theme.dart';
-
+import 'utils/app_theme.dart';
 import 'screens/splash/splash_screen.dart';
 
 void main() {
@@ -15,11 +14,7 @@ class DahiyaDiagnosticApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      title: "Dahiya Diagnostic Center",
-
       theme: AppTheme.lightTheme,
-
       home: const SplashScreen(),
     );
   }

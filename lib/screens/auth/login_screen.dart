@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../services/auth_service.dart';
 import '../dashboard/dashboard_screen.dart';
+import '../../models/user_model.dart';
+import '../../services/session_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -46,6 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
 
       if (response["status"] == "success") {
+        // Save logged-in user locally
+        final user = UserModel.fromJson(response);
+        await SessionService.saveUser(user);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const DashboardScreen()),
